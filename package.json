@@ -1,0 +1,28 @@
+{
+  "name": "story-books",
+  "version": "1.0.0",
+  "description": "Story Books is a simple NodeJS application to share stories.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moeabdol/story-books.git"
+  },
+  "keywords": [
+    "node",
+    "nodejs",
+    "stories",
+    "books"
+  ],
+  "author": "moeabdol",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/moeabdol/story-books/issues"
+  },
+  "homepage": "https://github.com/moeabdol/story-books#readme",
+  "devDependencies": {
+    "eslint": "^4.9.0"
+  }
+}
