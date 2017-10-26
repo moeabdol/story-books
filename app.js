@@ -1,12 +1,26 @@
 require('dotenv').config();
 
 const express    = require('express');
+const path       = require('path');
 const passport   = require('passport');
 const session    = require('express-session');
+const exphbs     = require('express-handlebars');
+const mainRoutes = require('./routes');
 const authRoutes = require('./routes/auth');
 
 const app = express();
 const PORT = 3000;
+
+// Configure static file directories
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'node_modules')));
+
+// Configure express-handlebars view engine
+app.engine('.hbs', exphbs({
+  defaultLayout: 'main',
+  extname: '.hbs'
+}));
+app.set('view engine', '.hbs');
 
 // Configure express-session middleware
 app.use(session({
@@ -26,11 +40,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/', (req, res) => {
-  res.send('index page');
-});
-
 // Configure routes
+app.use('/', mainRoutes);
 app.use('/auth', authRoutes);
 
 app.listen(PORT, err => {
