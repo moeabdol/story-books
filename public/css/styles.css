@@ -4,5 +4,9 @@ body {
   flex-direction: column; }
   body main {
     flex: 1 0 auto; }
+  body .nav-wrapper .fa-bars {
+    font-size: 25px; }
+  body footer {
+    margin-top: 20px; }
 
 /*# sourceMappingURL=styles.css.map */
