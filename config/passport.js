@@ -28,4 +28,16 @@ module.exports = function(passport) {
       })
       .catch(err => done(err));
   }));
+
+  passport.serializeUser((user, done) => {
+    done(null, user._id);
+  });
+
+  passport.deserializeUser((id, done) => {
+    User.findById(id)
+      .then(user => {
+        done(null, user);
+      })
+      .catch(err => done(err));
+  });
 };

@@ -9,8 +9,17 @@ router.get('/google', passport.authenticate('google', {
 router.get('/google/callback', passport.authenticate('google', {
   failureRedirect: '/'
 }), (req, res) => {
-  console.log('here');
   res.redirect('/dashboard');
+});
+
+router.get('/verify', (req, res) => {
+  if (req.user) console.log(req.user);
+  res.send('verify');
+});
+
+router.get('/signout', (req, res) => {
+  req.logout();
+  res.redirect('/');
 });
 
 module.exports = router;
