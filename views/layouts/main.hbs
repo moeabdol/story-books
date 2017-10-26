@@ -11,11 +11,17 @@
   <body>
     {{> _header}}
 
+    {{#if user}}
+      {{> _add_btn}}
+    {{/if}}
+
     <main>
       <div class="container">
         {{{body}}}
       </div>
     </main>
+
+    {{> _footer}}
 
     <script src="/jquery/dist/jquery.min.js"></script>
     <script src="/materialize-css/dist/js/materialize.min.js"></script>
