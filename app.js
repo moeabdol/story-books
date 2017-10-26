@@ -1,12 +1,13 @@
 require('dotenv').config();
 
-const express    = require('express');
-const path       = require('path');
-const passport   = require('passport');
-const session    = require('express-session');
-const exphbs     = require('express-handlebars');
-const mainRoutes = require('./routes');
-const authRoutes = require('./routes/auth');
+const express       = require('express');
+const path          = require('path');
+const passport      = require('passport');
+const session       = require('express-session');
+const exphbs        = require('express-handlebars');
+const mainRoutes    = require('./routes');
+const authRoutes    = require('./routes/auth');
+const storiesRoutes = require('./routes/stories');
 
 const app = express();
 const PORT = 3000;
@@ -43,6 +44,7 @@ app.use((req, res, next) => {
 // Configure routes
 app.use('/', mainRoutes);
 app.use('/auth', authRoutes);
+app.use('/stories', storiesRoutes);
 
 app.listen(PORT, err => {
   if (err) return console.log(err);
