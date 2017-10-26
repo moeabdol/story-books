@@ -1,11 +1,12 @@
-const express = require('express');
-const router = express.Router();
+const express     = require('express');
+const router      = express.Router();
+const authHelpers = require('../helpers/auth');
 
-router.get('/', (req, res) => {
+router.get('/', authHelpers.ensureGuest, (req, res) => {
   res.render('welcome');
 });
 
-router.get('/dashboard', (req, res) => {
+router.get('/dashboard', authHelpers.ensureAuthenticated, (req, res) => {
   res.render('dashboard');
 });
 
