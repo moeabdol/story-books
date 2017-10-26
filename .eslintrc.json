@@ -2,8 +2,7 @@
   "env": {
     "es6": true,
     "node": true,
-    "mocha": true,
-    "jquery": true
+    "mocha": true
   },
   "extends": "eslint:recommended",
   "parserOptions": {
@@ -41,5 +40,10 @@
         "after": true
       }
     ]
+  },
+  "globals": {
+    "$": true,
+    "document": true,
+    "window": true
   }
 }
