@@ -1,14 +1,15 @@
 require('dotenv').config();
 
-const express       = require('express');
-const path          = require('path');
-const passport      = require('passport');
-const session       = require('express-session');
-const exphbs        = require('express-handlebars');
-const bodyParser    = require('body-parser');
-const mainRoutes    = require('./routes');
-const authRoutes    = require('./routes/auth');
-const storiesRoutes = require('./routes/stories');
+const express           = require('express');
+const path              = require('path');
+const passport          = require('passport');
+const session           = require('express-session');
+const exphbs            = require('express-handlebars');
+const bodyParser        = require('body-parser');
+const mainRoutes        = require('./routes');
+const authRoutes        = require('./routes/auth');
+const storiesRoutes     = require('./routes/stories');
+const handlebarsHelpers = require('./helpers/hbs');
 
 const app = express();
 const PORT = 3000;
@@ -24,7 +25,11 @@ app.use(bodyParser.json());
 // Configure express-handlebars view engine
 app.engine('.hbs', exphbs({
   defaultLayout: 'main',
-  extname: '.hbs'
+  extname: '.hbs',
+  helpers: {
+    truncate: handlebarsHelpers.truncate,
+    stripTags: handlebarsHelpers.stripTags
+  }
 }));
 app.set('view engine', '.hbs');
 
