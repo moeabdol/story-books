@@ -1,7 +1,10 @@
 const Story = require('../models/story');
 
 const index = (req, res) => {
-  res.render('stories/index');
+  Story.find({ status: 'public' })
+    .populate('user')
+    .then(stories => res.render('stories/index', { stories }))
+    .catch(err => console.log(err));
 };
 
 const add = (req, res) => {

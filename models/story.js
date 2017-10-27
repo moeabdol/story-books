@@ -32,13 +32,13 @@ const StorySchema = Schema({
     },
     user: {
       type: Schema.Types.ObjectId,
-      ref: 'users',
+      ref: 'User',
       required: true
     }
   }],
   user: {
     type: Schema.Types.ObjectId,
-    ref: 'users',
+    ref: 'User',
     required: true
   },
   date: {
