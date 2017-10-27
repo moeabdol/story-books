@@ -28,7 +28,8 @@ app.engine('.hbs', exphbs({
   extname: '.hbs',
   helpers: {
     truncate: handlebarsHelpers.truncate,
-    stripTags: handlebarsHelpers.stripTags
+    stripTags: handlebarsHelpers.stripTags,
+    formatDate: handlebarsHelpers.formatDate
   }
 }));
 app.set('view engine', '.hbs');

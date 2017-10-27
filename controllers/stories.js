@@ -27,8 +27,16 @@ const create = (req, res) => {
     .catch(err => console.log(err));
 };
 
+const show = (req, res) => {
+  Story.findOne({ _id: req.params.id })
+    .populate('user')
+    .then(story => res.render('stories/show', { story }))
+    .catch(err => console.log(err));
+};
+
 module.exports = {
   index,
   add,
-  create
+  create,
+  show
 };
