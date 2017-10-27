@@ -5,5 +5,6 @@ const authHelpers = require('../helpers/auth');
 
 router.get('/', stories.index);
 router.get('/add', authHelpers.ensureAuthenticated, stories.add);
+router.post('/', authHelpers.ensureAuthenticated, stories.create);
 
 module.exports = router;

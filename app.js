@@ -5,6 +5,7 @@ const path          = require('path');
 const passport      = require('passport');
 const session       = require('express-session');
 const exphbs        = require('express-handlebars');
+const bodyParser    = require('body-parser');
 const mainRoutes    = require('./routes');
 const authRoutes    = require('./routes/auth');
 const storiesRoutes = require('./routes/stories');
@@ -15,6 +16,10 @@ const PORT = 3000;
 // Configure static file directories
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
+
+// Configure body-parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Configure express-handlebars view engine
 app.engine('.hbs', exphbs({
@@ -42,9 +47,9 @@ app.use((req, res, next) => {
 });
 
 // Configure routes
-app.use('/', mainRoutes);
 app.use('/auth', authRoutes);
 app.use('/stories', storiesRoutes);
+app.use('/', mainRoutes);
 
 app.listen(PORT, err => {
   if (err) return console.log(err);
