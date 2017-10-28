@@ -26,9 +26,22 @@ const select = (selected, options) => {
     'selected="selected"$&');
 };
 
+const editIcon = (storyUser, loggedUser, storyId, floating=true) => {
+  if (storyUser === loggedUser) {
+    if (floating) {
+      return `<a href="/stories/edit/${storyId}" class="btn-floating halfway-fab red"><i class="fa fa-pencil"></i></a>`;
+    } else {
+      return `<a href="/stories/edit/${storyId}"><i class="fa fa-pencil"></i></a>`;
+    }
+  } else {
+    return '';
+  }
+};
+
 module.exports = {
   truncate,
   stripTags,
   formatDate,
-  select
+  select,
+  editIcon
 };

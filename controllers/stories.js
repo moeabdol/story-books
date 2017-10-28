@@ -3,6 +3,7 @@ const Story = require('../models/story');
 const index = (req, res) => {
   Story.find({ status: 'public' })
     .populate('user')
+    .sort({ date: 'desc' })
     .then(stories => res.render('stories/index', { stories }))
     .catch(err => console.log(err));
 };
@@ -37,7 +38,11 @@ const show = (req, res) => {
 
 const edit = (req, res) => {
   Story.findOne({ _id: req.params.id })
-    .then(story => res.render('stories/edit', { story }))
+    .then(story => {
+      if (story.user != req.user.id) return res.redirect('/stories');
+
+      res.render('stories/edit', { story });
+    })
     .catch(err => console.log(err));
 };
 

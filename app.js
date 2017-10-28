@@ -34,7 +34,8 @@ app.engine('.hbs', exphbs({
     truncate: handlebarsHelpers.truncate,
     stripTags: handlebarsHelpers.stripTags,
     formatDate: handlebarsHelpers.formatDate,
-    select: handlebarsHelpers.select
+    select: handlebarsHelpers.select,
+    editIcon: handlebarsHelpers.editIcon
   }
 }));
 app.set('view engine', '.hbs');
