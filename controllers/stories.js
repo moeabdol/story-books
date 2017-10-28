@@ -65,6 +65,21 @@ const destroy = (req, res) => {
     .catch(err => console.log(err));
 };
 
+const createComment = (req, res) => {
+  Story.findById(req.params.id)
+    .then(story => {
+      story.comments.unshift({
+        body: req.body.commentBody,
+        user: req.user
+      });
+
+      story.save()
+        .then((story) => res.redirect(`/stories/${story._id}`))
+        .catch(err => console.log(err));
+    })
+    .catch(err => console.log(err));
+};
+
 module.exports = {
   index,
   add,
@@ -72,5 +87,6 @@ module.exports = {
   show,
   edit,
   update,
-  destroy
+  destroy,
+  createComment
 };
