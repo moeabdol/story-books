@@ -8,5 +8,11 @@ body {
     font-size: 25px; }
   body footer {
     margin-top: 20px; }
+  body .story-text {
+    height: 120px; }
+  body .dash-status {
+    text-transform: capitalize; }
+  body #delete-form {
+    display: inline; }
 
 /*# sourceMappingURL=styles.css.map */
