@@ -7,5 +7,6 @@ router.get('/', stories.index);
 router.get('/add', authHelpers.ensureAuthenticated, stories.add);
 router.post('/', authHelpers.ensureAuthenticated, stories.create);
 router.get('/:id', stories.show);
+router.get('/edit/:id', authHelpers.ensureAuthenticated, stories.edit);
 
 module.exports = router;

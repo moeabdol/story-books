@@ -34,9 +34,16 @@ const show = (req, res) => {
     .catch(err => console.log(err));
 };
 
+const edit = (req, res) => {
+  Story.findOne({ _id: req.params.id })
+    .then(story => res.render('stories/edit', { story }))
+    .catch(err => console.log(err));
+};
+
 module.exports = {
   index,
   add,
   create,
-  show
+  show,
+  edit
 };

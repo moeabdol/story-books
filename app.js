@@ -29,7 +29,8 @@ app.engine('.hbs', exphbs({
   helpers: {
     truncate: handlebarsHelpers.truncate,
     stripTags: handlebarsHelpers.stripTags,
-    formatDate: handlebarsHelpers.formatDate
+    formatDate: handlebarsHelpers.formatDate,
+    select: handlebarsHelpers.select
   }
 }));
 app.set('view engine', '.hbs');
