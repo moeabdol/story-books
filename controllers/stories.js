@@ -59,11 +59,18 @@ const update = (req, res) => {
     .catch(err => console.log(err));
 };
 
+const destroy = (req, res) => {
+  Story.findByIdAndRemove(req.params.id)
+    .then(() => res.redirect('/dashboard'))
+    .catch(err => console.log(err));
+};
+
 module.exports = {
   index,
   add,
   create,
   show,
   edit,
-  update
+  update,
+  destroy
 };

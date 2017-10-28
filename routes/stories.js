@@ -9,5 +9,6 @@ router.post('/', authHelpers.ensureAuthenticated, stories.create);
 router.get('/:id', stories.show);
 router.get('/edit/:id', authHelpers.ensureAuthenticated, stories.edit);
 router.put('/:id', authHelpers.ensureAuthenticated, stories.update);
+router.delete('/:id', authHelpers.ensureAuthenticated, stories.destroy);
 
 module.exports = router;

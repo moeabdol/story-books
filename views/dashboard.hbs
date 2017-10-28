@@ -24,7 +24,10 @@
               <i class="fa fa-pencil"></i>
               &nbsp;Edit
             </a>
-            <form id="delete-form" method="post" action="/stories/{{id}}">
+
+            <form id="delete-form" method="post"
+              action="/stories/{{id}}?_method=DELETE">
+              <input type="hidden" name="_method" value="DELETE" />
               <button type="submit" class="btn red">
                 <i class="fa fa-remove"></i>
                 &nbsp;Delete
