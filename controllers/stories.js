@@ -30,6 +30,7 @@ const create = (req, res) => {
 const show = (req, res) => {
   Story.findOne({ _id: req.params.id })
     .populate('user')
+    .populate('comments.user')
     .then(story => res.render('stories/show', { story }))
     .catch(err => console.log(err));
 };
