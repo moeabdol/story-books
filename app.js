@@ -6,6 +6,7 @@ const passport          = require('passport');
 const session           = require('express-session');
 const exphbs            = require('express-handlebars');
 const bodyParser        = require('body-parser');
+const methodOverride    = require('method-override');
 const mainRoutes        = require('./routes');
 const authRoutes        = require('./routes/auth');
 const storiesRoutes     = require('./routes/stories');
@@ -21,6 +22,9 @@ app.use(express.static(path.join(__dirname, 'node_modules')));
 // Configure body-parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// Configure method-override middleware
+app.use(methodOverride('_method'));
 
 // Configure express-handlebars view engine
 app.engine('.hbs', exphbs({

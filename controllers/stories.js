@@ -40,10 +40,30 @@ const edit = (req, res) => {
     .catch(err => console.log(err));
 };
 
+const update = (req, res) => {
+  Story.findById(req.params.id)
+    .then(story => {
+      let allowComments = true;
+
+      if (!req.body.allowComments) allowComments = false;
+
+      story.title = req.body.title;
+      story.body = req.body.body;
+      story.status = req.body.status;
+      story.allowComments = allowComments;
+
+      story.save()
+        .then(story => res.redirect(`/stories/${story._id}`))
+        .catch(err => console.log(err));
+    })
+    .catch(err => console.log(err));
+};
+
 module.exports = {
   index,
   add,
   create,
   show,
-  edit
+  edit,
+  update
 };
