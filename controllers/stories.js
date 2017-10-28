@@ -86,6 +86,20 @@ const createComment = (req, res) => {
     .catch(err => console.log(err));
 };
 
+const showUserStories = (req, res) => {
+  Story.find({ user: req.params.id, status: 'public' })
+    .populate('user')
+    .then(stories => res.render('stories/index', { stories }))
+    .catch(err => console.log(err));
+};
+
+const showMyStories = (req, res) => {
+  Story.find({ user: req.user.id })
+    .populate('user')
+    .then(stories => res.render('stories/index', { stories }))
+    .catch(err => console.log(err));
+};
+
 module.exports = {
   index,
   add,
@@ -94,5 +108,7 @@ module.exports = {
   edit,
   update,
   destroy,
-  createComment
+  createComment,
+  showUserStories,
+  showMyStories
 };

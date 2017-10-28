@@ -43,7 +43,9 @@
             <h5>{{body}}</h5>
             <div class="chip">
               <img src="{{user.image}}" alt="">
-              {{user.firstName}} {{user.lastName}}
+              <a href="/stories/user/{{user.id}}">
+                {{user.firstName}} {{user.lastName}}
+              </a>
             </div>
             <br />
             <small>Posted: {{formatDate date 'MMMM Do YYYY'}}</small>
